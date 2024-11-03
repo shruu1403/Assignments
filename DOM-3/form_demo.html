@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="name" id="name">
+        <input type="email" placeholder="email" id="email">
+        <input type="password" placeholder="password" id="password">
+        <input type="submit" value="SUBMIT">
+    </form>
+    
+</body>
+<script>
+    const myform=document.querySelector("form")
+    const name=document.getElementById("name")
+    const email=document.getElementById("email")
+    const password=document.getElementById("password")
+    let allData=[]
+    myform.addEventListener("submit",function(e)
+    {
+        e.preventDefault()
+        let data=
+        {
+            name:name.value ,
+            email:email.value ,
+            password:password.value
+        }
+        allData.push(data)
+    })
+    console.log(allData)
+</script>
+</html>
+
+<!-- 3 assignments in file explorer folder , open from there directly -->

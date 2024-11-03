@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        width: 300px;
+    }
+</style>
+<body>
+    <img src="" alt="">
+    <button id="prev"><</button>
+    <button id="next">></button>
+</body>
+<script>
+    let imgarr=[];
+    let image=document.querySelector("img");
+    let prev=document.getElementById("prev")
+    let next=document.getElementById("next")
+    let currentimg=0
+    image.setAttribute("src",imgarr[currentimg])
+    prev.addEventListener("click",function()
+    {
+        currentimg--
+        if(currentimg<0)
+    {
+    currentimg=imgarr.length-1
+    }
+     image.setAttribute("src",imgarr[currentimg])
+    })
+    next.addEventListener("click",function()
+    {
+        currentimg++
+        if(currentimg>=imgarr.length)
+    {
+        currentimg=0
+    }
+    image.setAttribute("src",imgarr[currentimg])
+    })
+    </script>
+</html>

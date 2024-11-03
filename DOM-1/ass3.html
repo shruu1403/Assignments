@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events</title>
+</head>
+<body>
+    <h1 id="display">Click on Login to continue</h1>
+  <button onClick="login()">Login</button>
+  <button onClick="logout()">Logout</button>
+</body>
+<script>
+    let heading=document.getElementById("display")
+    function login()
+    {
+        heading.innerText="Login Success"
+    }
+    function logout()
+    {
+        heading.innerText="Logout Success"
+    }
+</script>
+</html>

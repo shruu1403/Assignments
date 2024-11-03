@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0107)file:///C:/Users/Sony/Desktop/cap/Assignment%203.html/Assignment%204.html/Assignment%205.html/problem2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Calculator</title>
+        <style>
+            #head{
+                font-size: 40px;
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 50px;
+                color: teal;
+                border: 0px solid red;
+            }
+            #container{
+                display: grid;
+                height: 500px;
+                width:330px;
+                margin-left: 590px;
+                border: 0px solid red;
+                box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 0.2);
+            }
+            #end{
+            display:flex;
+            justify-content: right; 
+            /* to display the result in box towards right corner */
+            align-items: center;
+            margin-top: 30px;
+            height: 50px;
+            padding-right: 10px;
+            font-size: 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border: 0px solid red;
+            box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            #start{
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                /* grid-template-rows: repeat(4,65px); */
+                margin: 0 30px;
+                margin-top: 20px;
+                margin-bottom:50px;
+                gap:7px;
+                border: 0px solid red;
+            }
+            .button{
+                border:0px solid red;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                font-size: 25px;
+                padding: 10px;
+            }
+            .operation{
+                background-color: black;
+                color:white;
+            }
+            .clear{
+                background-color: red;
+                color:white;
+            }
+            .equal{
+                background-color: black;
+                color:white;
+            }
+            </style>
+    </head>
+    <body>
+        <div id="head"><b>Masai Calculator</b></div>
+        <div id="container">
+            <div id="end">0</div>
+            <div id="start">
+                <div class="button">1</div>
+                <div class="button">2</div>
+                <div class="button">3</div>
+                <div class="button operation">+</div>
+                <div class="button">4</div>
+                <div class="button">5</div>
+                <div class="button">6</div>
+                <div class="button operation">-</div>
+                <div class="button">7</div>
+                <div class="button">8</div>
+                <div class="button">9</div>
+                <div class="button operation">X</div>
+                <div class="button clear">C</div>
+                <div class="button">0</div>
+                <div class="button equal">=</div>
+                <div class="button operation">/</div>
+                </div>
+            </div>
+    </body>
+    <script>
+        let display=document.getElementById('end')
+        let buttons =document.getElementsByClassName('button')
+        let currentnum=''
+        let operation=''
+        let num1=null
+
+    for(let i=0;i<buttons.length;i++)
+    {
+            buttons[i].addEventListener('click',(e)=>
+            {
+            let value=e.target.innerText
+
+            if(value>='0'&& value<='9')
+            {
+            if(currentnum==='0')
+            {
+            currentnum=value
+            }
+            else{
+                currentnum+=value
+            }
+            display.innerText=currentnum
+        }
+        else if(value==='C')
+        {
+            currentnum=''
+            operation=''
+            num1=null
+            display.innerText='0'
+        }
+        else if(value==='=')
+        {
+            if(operation && num1!==null)
+            {
+                let num2=parseFloat(currentnum)
+                let result=0
+                if(operation==='+')
+            {
+                result=num1+num2
+            }
+            else if(operation==='-')
+            {
+                result=num1-num2
+            }
+            else if(operation==='X')
+            {
+                result=num1*num2
+            }
+            else if(operation==='/')
+            {
+                result=num1/num2
+            }
+            display.innerText=result
+            //if we want to continue using the result in upcoming calculation..assigning the result value to currentnum
+            currentnum=result.toString()
+            operation=''
+            num1=null
+            }
+        }
+        else
+        {
+            if(currentnum)
+            {
+                num1=parseFloat(currentnum)
+                operation=value
+                // Update display to show current input and selected operation
+                display.innerText = currentnum + ' ' + operation;
+                currentnum='' //reset currentnum
+            }
+        }
+
+        })
+
+    }
+    </script>
+</html>
