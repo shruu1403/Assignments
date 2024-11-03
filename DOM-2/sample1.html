@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="display"></h1>
+    <div class="cont">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+
+    </div>
+</body>
+<script>
+    let keypad=document.querySelectorAll(".cont>button")
+    let heading=document.getElementById("display")
+    for(let i=0;i<keypad.length;i++)
+{
+    keypad[i].addEventListener("click",function(event)
+    {
+        // heading.innerText=keypad[i].innerText //ist way
+        heading.innerText=event.target.innerText
+    })
+}
+
+</script>
+</html>

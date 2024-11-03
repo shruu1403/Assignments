@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <input type="number" id="enter" placeholder="enter first number">
+        <input type="number" id="enteragain" placeholder="enter second number">
+
+    <div class="operators">
+        <button id="add">add</button>
+        <button id="subtract">subtract</button>
+        <button id="multiply">multiply</button>
+        <button id="divide">divide</button>
+    </div>
+    <script>
+        let inputTag1=document.getElementById("enter")
+        let inputTag2=document.getElementById("enteragain")
+
+        document.getElementById("add").addEventListener("click",function()
+    {
+        let result=Number(inputTag1.value)+Number(inputTag2.value)
+        alert(result)
+    })
+
+    document.getElementById("subtract").addEventListener("click",function()
+{
+    let result=Number(inputTag1.value)-Number(inputTag2.value)
+    alert(result)
+})
+
+document.getElementById("multiply").addEventListener("click",function()
+{
+    let result=Number(inputTag1.value)*Number(inputTag2.value)
+    alert(result)
+})
+
+document.getElementById("divide").addEventListener("click",function()
+{
+    let result=Number(inputTag1.value)/Number(inputTag2.value)
+    alert(result)
+})
+
+
+    </script>
+</body>
+</html>

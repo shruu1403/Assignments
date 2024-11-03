@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container
+    {
+        width: 90%;
+        margin: auto;
+        display: grid;
+        grid-template-columns:repeat(3,1fr);
+
+    }
+    #container>div{
+        border:2px solid red;
+        margin:10px;
+    }
+</style>
+<body>
+    <div id="container">
+
+    </div>
+    
+</body>
+<script>
+    const PRODUCTS=[];
+    let cont=document.getElementById("container")
+    PRODUCTS.map((ele)=>
+{
+    let card=document.createElement("div")
+    let title=document.createElement("h2")
+    let price=document.createElement("p")
+    let seller=Document.createElement("h4")
+    title.innerText=ele.product 
+    price.innerText=ele.price
+    seller.innerText=ele.seller
+
+    card.append(title,price,seller)
+    cont.append(card)    
+
+})
+</script>
+</html>

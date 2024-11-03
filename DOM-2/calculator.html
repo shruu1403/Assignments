@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="display"></h1>
+    <div class="keypad">
+        <button>0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+    </div>
+    <div class="operator">
+        <button>+</button>
+        <button>-</button>
+        <button>*</button>
+        <button>/</button>
+    </div>
+    <button id="equal">=</button>
+</body>
+<script>
+    let keypadbutton=document.querySelectorAll(".keypad>button")
+    let operatorbutton=document.querySelectorAll(".operator>button")
+    let equal=document.getElementById("equal")
+    let heading=document.getElementById("display")
+    
+    let firstno=""
+    let secondno=""
+    let isFirstno=true
+    let operators=""
+
+    equal.addEventListener("click",function()
+{
+    heading.innerText=calculate(firstno,secondno,operators)
+})
+
+    for(let i=0;i<keypadbutton.length;i++)
+{
+    keypadbutton[i].addEventListener("click",function()
+{
+    if(isFirstno==true)
+{
+    firstno+=keypadbutton[i].innerText //concatenation
+    heading.innerText=firstno
+}
+else{
+    secondno+=keypadbutton[i].innerText //concatenation
+    heading.innerText=secondno
+}
+})
+}
+
+for(let i=0;i<operatorbutton.length;i++)
+{
+    operatorbutton[i].addEventListener("click",function()
+{
+    isFirstno=false
+    operators=operatorbutton[i].innerText
+})
+}
+
+function calculate(firstno,secondno,operators)
+{
+    switch(operators)
+    {
+        case "+":
+            return Number(firstno)+Number(secondno)
+            case "-":
+                return Number(firstno)-Number(secondno)
+                case "*":
+                    return Number(firstno)*Number(secondno)
+                    case "/":
+                        return Number(firstno)/Number(secondno)
+    }
+}
+
+</script>
+</html>
