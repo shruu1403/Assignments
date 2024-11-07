@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //creating promise object using cons func
+    //new Promise (executorFunction)
+
+    // let MyPromise = new Promise(function(resolve,reject){
+    //     resolve('Promise resolved')
+    // })
+    // console.log(MyPromise)
+
+    // let MyPromise1 = new Promise(function(resolve,reject){
+    //     reject('Promise rejected')
+    // })
+    // console.log(MyPromise1)
+//................................
+//     let isNetworkRequestSuccessful=true
+
+//     let MyPromise=new Promise(function(resolve,reject)
+// {
+//     setTimeout(function()
+// {
+//     if(isNetworkRequestSuccessful)
+// {
+//     resolve('request successful')
+// }
+// else{
+//     reject('request failed')
+// }
+// },2000)
+// })
+
+// console.log(MyPromise)
+//.........................
+
+// let isNetworkRequestSuccessful=true  //resolved(fulfilled) when its true,rejected when its false
+
+// let MyPromise=new Promise(function(resolve,reject)
+// {
+//     setTimeout(function()   //settimeout is used bcause this works fine incase of a asyn operation like settimeout which delays
+// {
+//     if(isNetworkRequestSuccessful)
+// {
+//     const data=[
+//         {id:1 , name:"batman"},
+//         {id:2 , name:"spiderman"} ,
+//     ]
+//     resolve(data)
+// }
+// else{
+//     reject({message:"Request Failed"})
+// }
+// },2000)
+// })
+// console.log(MyPromise)
+
+// MyPromise
+// .then(function(res)
+// {
+//     console.log(res)
+// })
+// .catch(function(err)
+// {
+//     console.log(err)
+// })
+// //then and catch methods help to handle resolved promise or rejected promise
+// .finally(function()
+// {
+//     console.log('this function will be exexuted whether the promise is resolved or rejected')
+// })
+
+
+let isSuccessful=true
+function fetchData()
+{
+    return new Promise(function (resolve,reject)
+{
+    setTimeout(function()
+{
+    if(isSuccessful)
+{
+    resolve({msg:"resolved"})
+} else{
+    reject({msg:"rejected"})
+}
+},1000)
+})
+}
+
+fetchData()
+.then(function(info)
+{
+    console.log(info)
+})
+.catch(function(res)
+{
+    console.log(res)
+})
+  </script>
+</html>

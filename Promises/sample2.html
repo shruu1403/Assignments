@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function firstTask()
+        {
+            return new Promise(function(resolve,reject)
+        {
+            setTimeout(function()
+        {
+            console.log("First task done")
+            resolve()
+        },1000)
+        })
+        }
+
+        function secondTask()
+        {
+            return new Promise(function(resolve,reject)
+        {
+            setTimeout(function()
+        {
+            console.log("Second task done")
+            // resolve()
+            reject("Second one got rejected")
+        },1000)
+        })
+        }
+
+        function thirdTask()
+        {
+            return new Promise(function(resolve,reject)
+        {
+            setTimeout(function()
+        {
+            console.log("Third task done")
+            resolve()
+        },1000)
+        })
+        }
+
+        firstTask()
+        .then(secondTask)
+        .then(thirdTask)
+        .then(function()
+    {
+        console.log("all tasks done")
+    })
+    .catch(function(err)
+{
+    console.log(err)
+})
+
+    </script>
+</body>
+</html>

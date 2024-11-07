@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata's R&D Dept</title>
+</head>
+<body>
+    <h1>Tata's R&D Dept</h1>
+</body>
+<script>
+    const carProto= {
+        engineOn : function()
+        {
+            console.log("engine is on")
+        },
+        engineOff : function()
+        {
+            console.log("engine is off")
+        }
+    }
+
+    function fourWheel(engine,speed,seatingCapacity,bodyStyle)
+    {
+        let fourwheeler=Object.create(carProto)
+        fourwheeler.engine=engine
+        fourwheeler.speed=speed
+        fourwheeler.seatingCapacity=seatingCapacity
+        fourwheeler.bodyStyle=bodyStyle
+        return fourwheeler
+    }
+    // func to create sedan from fourWheel
+    function createSedan(engine,speed,seatingCapacity,bodyStyle,sunroof)
+    {
+        let sedan=fourWheel(engine,speed,seatingCapacity,bodyStyle)
+        sedan.sunroof=sunroof
+        sedan.openSunroof=function()
+        {
+            console.log("sunroof opened")
+        }
+        return sedan
+    }
+    //func to create suv from fourWheel
+    function createSuv(engine,speed,seatingCapacity,bodyStyle,airbags)
+    {
+        let suv=fourWheel(engine,speed,seatingCapacity,bodyStyle)
+        suv.airbags=airbags
+        suv.airbagsOn=function()
+        {
+            console.log("airbags accessible")
+        }
+        return suv
+    }
+
+    let sedan_car=createSedan("gasoline","100km/h",6,"Sedan",true)
+    let suv_car=createSuv("diesel","120km/h",7,"SUV",true)
+
+    console.log(sedan_car)
+    sedan_car.engineOff()
+    sedan_car.openSunroof()
+
+    console.log(suv_car)
+    suv_car.engineOn()
+    suv_car.airbagsOn()
+</script>
+</html>

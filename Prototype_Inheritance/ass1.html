@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata's R&D</title>
+</head>
+<body>
+    <h1>Tata's R&D</h1>
+</body>
+<script>
+    function carProto(engine,speed,seatingCapacity,bodyStyle)
+    {
+        this.engine=engine
+        this.speed=speed
+        this.seatingCapacity=seatingCapacity
+        this.bodyStyle=bodyStyle
+    }
+    carProto.prototype.engineOn=function()
+    {
+        console.log("engine on")
+    }
+    carProto.prototype.engineOff=function()
+    {
+        console.log("engine off")
+    }
+
+    //cons func for Sedan inheriting from carproto
+     function Sedan(engine,speed,seatingCapacity,bodyStyle,sunroof)
+     {
+        carProto.call(this,engine,speed,seatingCapacity,bodyStyle)  //"this" binds the properties of carproto to Sedan instance
+        this.sunroof=sunroof
+     }
+     Object.setPrototypeOf(Sedan.prototype,carProto.prototype)   //Sedan inherits all methods from carproto
+
+     Sedan.prototype.sunroofOpen=function()
+     {
+        console.log("sunroof feature accessible")
+     }
+    
+
+     //cons func for SUV inheriting from carproto
+     function SUV(engine,speed,seatingCapacity,bodyStyle,airbags)
+     {
+        carProto.call(this,engine,speed,seatingCapacity,bodyStyle)
+        this.airbags=airbags
+     }
+     Object.setPrototypeOf(SUV.prototype,carProto.prototype)
+
+     SUV.prototype.airbagsON=function()
+     {
+        console.log("airbags activated")
+     }
+
+     let sedan=new Sedan("gasoline","100km/h",6,"Sedan",true)
+     let suv=new SUV("diesel","120km/h",7,"SUV",true)
+
+     console.log(sedan)
+     sedan.engineOn()
+     sedan.sunroofOpen()
+
+     console.log(suv)
+     suv.engineOff()
+     suv.airbagsON()
+
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<style>
+    #stopwatch{
+        font-size: 40px;
+        margin-left: 600px;
+    }
+    #start{
+        margin-left: 580px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div id="stopwatch">00:00:00</div>
+    <button id="start">START</button>
+    <button id="pause">PAUSE</button>
+    <button id="reset">RESET</button>
+    
+</body>
+<script>
+    let stopwatch=document.getElementById("stopwatch")
+    let start=document.getElementById("start")
+    let pause=document.getElementById("pause")
+    let reset=document.getElementById("reset")
+    let isRunning=false
+    let seconds=0
+    let minutes=0
+    let hours=0
+    let MyInterval;
+
+    start.addEventListener("click",function()
+{
+    if(isRunning==false)
+{
+    isRunning=true
+    MyInterval=setInterval(function()
+{
+    seconds++
+
+    if(seconds===60)
+{
+    seconds=0
+    minutes++
+}
+if(minutes===60)
+{
+    minutes=0
+    hours++
+}
+
+//if hours,mins,secs, are less than 10
+
+let displayhours=hours
+let displayminutes=minutes
+let displayseconds=seconds
+
+if(hours<10)
+{
+    displayhours="0" + hours
+}
+if(minutes<10)
+{
+    displayminutes="0" + minutes
+}
+if(seconds<10)
+{
+    displayseconds="0" + seconds
+}
+
+stopwatch.textContent=displayhours + ":" + displayminutes + ":" + displayseconds
+},1000)
+}
+})
+
+pause.addEventListener("click" , function()
+{
+    clearInterval(MyInterval)
+    isRunning=false
+})
+
+reset.addEventListener("click",function()
+{
+    clearInterval(MyInterval)
+    seconds=0
+    minutes=0
+    hours=0
+    isRunning=false
+    stopwatch.textContent="00:00:00"
+})
+
+</script>
+</html>

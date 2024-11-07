@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE BOOK STORE</title>
+</head>
+<body>
+    <h1>ONLINE BOOK STORE</h1>
+</body>
+<script>
+    let BookInfo=[]
+    function AuthorDetails(AuthorName,AuthorBirthYear,AuthorNationality)
+    {
+        this.name=AuthorName
+        this.birthyear=AuthorBirthYear
+        this.Nationality=AuthorNationality
+    }
+    function BookDetails(title,AuthorDet,price,genre)
+    {
+        this.bookTitle=title
+        this.author=AuthorDet
+        this.bookPrice=price
+        this.bookGenre=genre
+
+    this.bookGetInfo=function()
+    {
+        console.log("Title of book is - " +this.bookTitle)
+        console.log("Author of the book is - "+ this.author.name) 
+        console.log("The price of the book is - "+ this.bookPrice)
+        console.log("Genre of the book is - "+ this.bookGenre)
+    }
+    BookInfo.push(this)
+}
+//creating instances of book and author objects
+    let Author1=new AuthorDetails("JK rowling",1965,"British")
+    let Author2=new AuthorDetails("Jane Austen",1775,"British")
+
+    let book1=new BookDetails("Harry potter",Author1,300,"Fantasy")
+    let book2=new BookDetails("Pride and Prejudice",Author2,200,"Fiction")
+
+    //display book details for each book
+    for(let i=0;i<BookInfo.length;i++)
+    {
+        BookInfo[i].bookGetInfo()
+        console.log("")
+    }
+
+//bookGetInfo is a method defined within each BookDetails instance
+//invoking the method on each book object...which outputs the details of the specific book
+</script>
+</html>

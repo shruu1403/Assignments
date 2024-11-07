@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slideshow</title>
+</head>
+<style>
+    img{
+        height:600px;
+        width: 700px;
+    }
+</style>
+<body>
+    <img src="" alt="slideshow image">
+    <button id="prev"><</button>
+    <button id="next">></button>
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+</body>
+<script>
+    let imgarr=[
+        "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        "https://media.istockphoto.com/id/527039202/photo/field-sunrise-and-blue-sky.webp?a=1&b=1&s=612x612&w=0&k=20&c=-mCSugTrweyOjwpVvHSUf4FyzyX55O5Jv_Is7UVGrCA=",
+        "https://media.istockphoto.com/id/1694679185/photo/mountain-lake-on-a-summer-day.webp?a=1&b=1&s=612x612&w=0&k=20&c=kZU9SU-tVFEl5CxbALpcU8V39V0LurPm8vcr4A1Z-Rw=",
+        "https://media.istockphoto.com/id/1368262606/photo/tall-powerful-cross-ocean-wave-breaking-during-a-dark-stormy-evening.webp?a=1&b=1&s=612x612&w=0&k=20&c=8eA7DYjGvDVnMe63W7DvYDCMPDDJGrZunT1qlHyTj0c=",
+        "https://media.istockphoto.com/id/1777773387/photo/mountains-in-the-morning-on-a-foggy-day.webp?a=1&b=1&s=612x612&w=0&k=20&c=IiNZeJb834H4KKTRo_cr7WXluiZoVHr-ToXE-TyVYJs=",
+        "https://media.istockphoto.com/id/511361356/photo/board-walk-on-the-beach.webp?a=1&b=1&s=612x612&w=0&k=20&c=0Y9A_wxWnyJjWSg6mD02HTdsWfW9dbxr_RsnKjKp4_o=",
+        "https://images.unsplash.com/photo-1672215373027-1692c14df121?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhdXRpZnVsJTIwc2NlbmVyeXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://images.unsplash.com/photo-1672215251935-0edbeec181ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwc2NlbmVyeXxlbnwwfHwwfHx8MA%3D%3D"
+    ];
+    let image=document.querySelector("img");
+    let prev=document.getElementById("prev")
+    let next=document.getElementById("next")
+    let currentimg=0
+    let slideshowInterval;
+    let start=document.getElementById("start-btn")
+    let stop=document.getElementById("stop-btn")
+
+    image.setAttribute("src",imgarr[currentimg])
+
+    prev.addEventListener("click",function()
+    {
+        currentimg--
+        if(currentimg<0)
+    {
+    currentimg=imgarr.length-1
+    }
+     image.setAttribute("src",imgarr[currentimg])
+    })
+
+    
+    next.addEventListener("click",function()
+    {
+        currentimg++
+        if(currentimg>=imgarr.length)
+    {
+        currentimg=0
+    }
+    image.setAttribute("src",imgarr[currentimg])
+    })
+
+
+    //to start the slideshow
+    function startSlideshow()
+    {
+        clearInterval(slideshowInterval)
+        slideshowInterval=setInterval(() =>
+    {
+        currentimg++
+        if(currentimg>=imgarr.length)
+    {
+        currentimg=0
+    }
+    image.setAttribute("src",imgarr[currentimg])
+
+    },2000)
+}
+ 
+    //to stop the slideshow
+    function stopSlideshow()
+    {
+        clearInterval(slideshowInterval)
+    }
+
+    start.addEventListener("click",startSlideshow)
+    stop.addEventListener("click",stopSlideshow)
+    </script>
+</html>
+

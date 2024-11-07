@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+<style>
+    #timer{
+        margin-left: 600px;
+        font-size: 40px;
+    }
+    #start{
+        margin-left: 580px;
+    }
+    #hours{
+        margin-left: 430px;
+
+    }
+</style>
+<body>
+    <div id="timer">00:00:00</div>
+    <input type="text" placeholder="Hours" id="hours">
+    <input type="text" placeholder="Minutes" id="minutes">
+    <input type="text" placeholder="Seconds" id="seconds">
+    <br>
+    <br>
+    <button id="start">START</button>
+    <button id="pause">PAUSE</button>
+    <button id="reset">RESET</button>
+
+    
+</body>
+<script>
+    let time=document.getElementById("timer")
+    let hrs,mins,sec
+    let start=document.getElementById("start")
+    let pause=document.getElementById("pause")
+    let reset=document.getElementById("reset")
+
+    let isRunning=false
+    let MyInterval;
+
+    function display()
+    {
+        let displayhours=hrs
+        let displayminutes=mins
+        let displayseconds=sec
+
+        if(hrs<10)
+        {
+        displayhours="0" + hrs
+        }
+        if(mins<10)
+        {
+        displayminutes="0" + mins
+        }
+        if(sec<10)
+        {
+        displayseconds="0" + sec
+        }
+ 
+        time.textContent=displayhours + ":" + displayminutes + ":" + displayseconds
+    }
+
+    start.addEventListener("click",function()
+{
+    if(isRunning==false)
+{
+    isRunning=true
+    hrs=Number(document.getElementById("hours").value) 
+    mins=Number(document.getElementById("minutes").value)
+    sec=Number(document.getElementById("seconds").value)
+    display()
+}
+MyInterval=setInterval(function()
+{
+    if(sec===0)
+{
+    if(mins===0)
+{
+    if(hrs===0)
+{
+    clearInterval(MyInterval)
+    isRunning=false
+    return;
+}
+else{
+    hrs--
+    mins=59
+    sec=59
+}
+}
+else
+{
+    mins--
+    sec=59
+}
+}
+else{
+    sec--
+}
+display()
+},1000)
+})
+
+pause.addEventListener("click",function()
+{
+    clearInterval(MyInterval)
+    isRunning=false
+})
+
+reset.addEventListener("click",function()
+{
+    clearInterval(MyInterval)
+    isRunning=false
+    hrs=0
+    mins=0
+    sec=0
+    time.textContent="00:00:00"
+    document.getElementById("hours").value=""
+    document.getElementById("minutes").value=""
+    document.getElementById("seconds").value=""
+
+})
+</script>
+</html>

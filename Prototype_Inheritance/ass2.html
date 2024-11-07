@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Vehicle Constructor</title>
+</head>
+<body>
+    <h1>Basic Vehicle Constructor</h1>
+</body>
+<script>
+    function vehicleConst(brand,model,speed,fuelType)
+    {
+        this.brand=brand
+        this.model=model
+        this.speed=speed
+        this.fuelType=fuelType
+    }
+    //creating methods using prototype
+    vehicleConst.prototype.accelerate=function()
+    {
+        console.log("speed of the vehicle is increased")
+    }
+    vehicleConst.prototype.brake=function()
+    {
+        console.log("speed of the vehicle is decreased")
+    }
+    vehicleConst.prototype.reFuel=function()
+    {
+        console.log("vehicle is refueling")
+    }
+
+    //cons func for carConst inheriting from vehicleConst
+    function carConst(brand,model,speed,fuelType,numberOfWheels,honk)
+    {
+        vehicleConst.call(this,brand,model,speed,fuelType)  //this helps to bind the properties of both vehicle and car
+        this.numberOfWheels=numberOfWheels
+        this.honk=honk
+    }
+    Object.setPrototypeOf(carConst.prototype,vehicleConst.prototype)  //car inherits all methods from vehicle
+
+    carConst.prototype.honkSound=function()
+    {
+        console.log("honking sound produced")
+    } 
+
+    //cons func for airplaneConst inheriting from vehicleConst
+    function airplaneConst(brand,model,speed,fuelType,numberOfEngines,hasLandingGear,takeOff)
+    {
+        vehicleConst.call(this,brand,model,speed,fuelType)
+        this.numberOfEngines=numberOfEngines
+        this.hasLandingGear=hasLandingGear
+        this.takeOff=takeOff
+    }
+    Object.setPrototypeOf(airplaneConst.prototype,vehicleConst.prototype)
+
+    airplaneConst.prototype.takeoff=function()
+    {
+        console.log("airplane is taking off")
+    }
+
+    //creating new intances
+    let Car=new carConst("Tesla","Tesla Model S Plaid","200mph","Electric",4,true)
+    let Airplane=new airplaneConst("Boeing","747-8","614mph","jet A-1",4,true,true)
+
+    console.log(Car)
+    Car.accelerate()
+    Car.brake()
+    Car.reFuel()
+    Car.honkSound()
+
+    console.log(Airplane)
+    Airplane.accelerate()
+    Airplane.brake()
+    Airplane.reFuel()
+    Airplane.takeoff()
+
+</script>
+</html>
