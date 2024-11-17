@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRINGS</title>
+</head>
+<body>
+    
+</body>
+<script>
+  let characterToLowerCase=(char)=>
+{
+    let uppercase="ABCDEFGHIJKLMNOPQRSTUBWXYZ"
+    let lowercase="abcdefghijklmnopqrstuvwxyz"
+    for(let i=0;i<uppercase.length;i++)
+{
+    if(char==uppercase[i])
+{
+    char=lowercase[i]
+    return char;
+}
+}
+}
+
+let wordToLowerCase=(word)=>
+{
+    let newWord=""
+    for(let i=0;i<word.length;i++)
+{
+    newWord+=characterToLowerCase(word[i])
+}
+return newWord
+}
+
+let arrayToLowerCase=(arr)=>
+{
+    let newArray=[]
+    let newWord=""
+    for(let i=0;i<arr.length;i++)
+{
+    newWord=wordToLowerCase(arr[i])
+    newArray.push(newWord)
+}
+return newArray
+}
+let ex="SHRUTI"
+console.log(wordToLowerCase(ex))
+
+let example=["HI","BYE","HELLO"]
+console.log(arrayToLowerCase(example))
+</script>
+</html>

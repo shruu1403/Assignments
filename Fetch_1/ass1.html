@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<style>
+    *{
+        text-align: center;
+    }
+    #form{
+        background-color: rgb(89, 220, 241);
+        border-radius: 30px;
+        padding: 5px;
+        border: 1px solid black;
+        width: 25%;
+        height: 250px;
+        margin: auto;
+    }
+    h1,h3{
+        color: black;
+    }
+    button{
+        cursor: pointer;
+        background-color: beige;
+        padding: 15px ;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+    #container{
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        margin-top: 30px;
+    }
+    #container>div{
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: rgb(149, 182, 43);
+    }
+    #container>div>p{
+        color:black;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <h1>Local Storage</h1>
+    <div id="form">
+        <h3>Enter your name:</h3>
+        <input type="text" placeholder="Name" id="name">
+        <h3>Enter your age:</h3>
+        <input type="number" placeholder="Age" id="age">
+        <br>
+        <br>
+        <button id="submit">Submit</button>
+        <button id="display">Display</button>
+    </div>
+    <div id="container">
+
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

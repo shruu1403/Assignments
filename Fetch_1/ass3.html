@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMDB Movies API</title>
+</head>
+<style>
+    #root{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap:20px;
+        padding: 20px;
+    }
+    .movie-card{
+        border: 1px solid black;
+        padding:10px;
+    }
+    .movie-card>img{
+        margin-left: 70px;
+        height: 400px;
+        width: 300px;
+    }
+    .movie-card>h2{
+        margin-left:150px;
+    }
+    .movie-card>h3{
+        margin-left: 150px;
+        color: red;
+    }
+    .movie-card>h4{
+        margin-left: 150px;
+        color: rgb(21, 109, 160);
+    }
+</style>
+<body>
+    <div id="root"></div>
+    <script>
+        let rootElement=document.getElementById("root")
+        fetch("https://www.omdbapi.com/?i=tt3896198&apikey=783ec8c5&s=conjuring")
+        
+    .then(function(response)
+    {
+        return response.json()
+    })
+    .then(function(movieList)
+    {
+        let movies=movieList.Search
+        displayData(movies)
+    })
+    .catch(function(error)
+    {
+    console.log(error)
+    })
+    function displayData(data)
+    {
+        data.forEach(function(movie){
+        let movieCard=document.createElement("div")
+        movieCard.className="movie-card"
+
+        let movieImage=document.createElement("img")
+        movieImage.src=movie.Poster
+
+        let movieName=document.createElement("h2")
+        movieName.textContent=movie.Title
+
+        let movieYear=document.createElement("h3")
+        movieYear.textContent="Year:"+movie.Year
+
+        let movieID=document.createElement("h4")
+        movieID.textContent="IMDBid:"+ movie.imdbID
+
+        movieCard.append(movieImage,movieName,movieYear,movieID)
+        rootElement.append(movieCard)
+        })
+    }
+    </script>
+</body>
+</html>

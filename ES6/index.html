@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <title>Fetch Scholar</title>
+</head>
+
+<body>
+    <div id="nav">
+        <h2>URBANIC</h2>
+        <input type="text" placeholder="Search the products" id="search">
+        <button onclick="search()">Search</button>
+        <br>
+        <select name="sort" id="sort">
+            <option value="">Sort</option>
+            <option value="lowPrice">Lower price</option>
+            <option value="highPrice">Higher price</option>
+        </select>
+    </div>
+    <div id="navbar-container"></div>
+    <div id="root"></div>
+
+</body>
+<script src="index.js" type="module"></script>
+</html>

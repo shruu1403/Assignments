@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+</head>
+<style>
+    *{
+        align-items: center;
+    }
+    body{
+        background-color: rgb(213, 225, 230);
+    }
+    h1{
+        text-align: center;
+    }
+    table{
+        border-collapse: collapse;
+        margin: auto;
+        width:50%;
+    }
+    td{
+        border: 1px solid black;
+        padding: 10px;
+    }
+    thead{
+        background-color: rgb(250, 219, 48);
+    }
+    tr:nth-child(even){
+        background-color:darkcyan;
+    }
+
+
+</style>
+<body>
+    <h1>ToDos</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>TITLE</td>
+                <td>STATUS</td>
+            </tr>
+        </thead>
+        <tbody id="root">
+
+        </tbody>
+    </table>
+</body>
+<script src="index1.js"></script>
+</html>

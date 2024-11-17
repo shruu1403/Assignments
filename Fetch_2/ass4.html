@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+</head>
+<style>
+    *{
+        background-color: #f2f2f2;
+    }
+    #nav{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        margin-left: 90px;
+        margin-top: 50px;
+    }
+    #searchBar{
+        display: flex;
+        justify-content: space-between;
+        height: 40px;
+        width: 30%;
+        border-radius: 10px;
+    }
+    #citySearch{
+        width: 100%;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    #search{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 10px;
+        color: white;
+        background-color: #48484a;
+        cursor: pointer;
+    }
+    #units{
+        background-color: #ececed;
+        width:20% ;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        border-radius: 10px;
+    }
+    #units>button{
+        border-radius: 10px;
+    }
+    #main{
+        margin: auto;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        border: 1px solid gray;
+        border-radius: 30px;
+    }
+    #details{
+        margin: 20px;
+    }
+    #date{
+        color: red;
+    }
+    h1,h2{
+        color: #474749;
+    }
+    .mapouter{
+        padding: 50px;
+        border: 1px solid red;
+    }
+    #forecast{
+        display: flex;
+        color: #474749;
+    }
+
+</style>
+<body>
+    <div id ="nav">
+        <div id="searchBar">
+            <input type="text" placeholder="City" id="citySearch">
+            <button id="search">Search</button>
+        </div>
+        <div id="units">
+            <button>Metric: C, m/s</button>
+            <button>Imperial: F, mph</button>
+        </div>
+    </div>
+    <div id="main">
+        <div id="details">
+            <h2 id="date"></h2>
+            <h1 id="city"></h1>
+            <br>
+            <h1 id="temp"></h1>
+            <h1 id="desc"></h1>
+            <h1 id="minTemp"></h1>
+            <h1 id="maxTemp"></h1>
+            <div id="forecast">
+
+            </div>
+        </div>
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe width="600" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <a href="https://www.embedgooglemap.net">embed google maps</a>
+                    <style>
+                        .mapouter{position: relative;text-align: right;height:500px; width: 600px;}
+                        .gmap_canvas{overflow: hidden;background: none!important;height: 500px;width: 600px;}
+                    </style>
+            </div>
+        </div> 
+</body>
+<script src="index2.js"></script>
+</html>

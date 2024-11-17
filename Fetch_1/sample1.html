@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch-API2</title>
+</head>
+<style>
+    #root{
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        padding: 20px;
+        gap:20px;
+      
+    }
+    .prod-card{
+        border: 1px solid black;
+    }
+    .prod-card>img{
+        width: 200px;
+        height: 200px;
+        margin-left: 120px;
+    }
+    .prod-price{
+        color: red;
+        font-size: 20px;
+    }
+    .prod-desc{
+        color:blue;
+    }
+    .prod-name{
+        color:green;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div id="root"></div>
+    <script>
+        let rootElement=document.getElementById("root")
+        fetch("https://fakestoreapi.com/products")
+        .then(function(res)
+    {
+        return res.json()  //converting raw data into usable format
+    })
+    .then(function(data)   //data passed in correct form to use 
+{
+    console.log(data)
+    printData(data) //function call to display data
+})
+.catch(function(err)
+{
+    console.log(err)
+})
+
+function printData(data)
+{
+    data.forEach(function(product)
+{
+    //create card which will have all info wrt product
+    let productCard=document.createElement("div")
+    productCard.className="prod-card"
+
+    //create an image
+    let productImage=document.createElement("img")
+    productImage.src=product.image
+
+    //create id
+    let productId=document.createElement("p")
+    productId.textContent=product.id
+
+    //create Name
+    let productName=document.createElement("p")
+    productName.className="prod-name"
+    productName.textContent=product.title
+
+    //create category
+    let productCategory=document.createElement("p")
+    productCategory.textContent=product.category
+
+    //create price
+    let productPrice=document.createElement("p")
+    productPrice.className="prod-price"
+    productPrice.textContent=product.price
+
+    //create description
+    let productDesc=document.createElement("P")
+    productDesc.className="prod-desc"
+    productDesc.textContent=product.description
+
+    productCard.append(productImage,productId,productName,productCategory,productPrice,productDesc)
+    rootElement.append(productCard)
+})
+}
+
+    </script>
+</body>
+</html>

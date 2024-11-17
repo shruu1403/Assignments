@@ -1,0 +1,68 @@
+#root{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 20px;
+    gap:20px;
+    background-color: burlywood;
+  
+}
+.prod-card{
+    border: 1px solid bisque ;
+}
+.prod-card>img{
+    width: 200px;
+    height: 200px;
+    margin-left: 120px;
+    border-radius: 20px;
+}
+.prod-cat{
+    color: yellow;
+    font-size: 20px;
+}
+.prod-price{
+    color:rgb(248, 73, 20);
+    font-size: 20px;
+}
+.prod-desc{
+    color:brown;
+}
+.prod-name{
+    color:darkolivegreen;
+    font-size: 20px;
+}
+.navbar{
+    padding: 10px;
+    margin: 0;
+    background-color: bisque;
+    color:darkorchid;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+}
+a{
+    text-decoration: none;
+    color:darkslategray;
+}
+#nav{
+    margin: auto;
+    border-radius: 30px;
+    height: 130px;
+    margin-bottom: 20px;
+    width: 30%;
+    background-color: darkslategray;
+    color: white;
+}
+h2{
+    text-align: center;
+}
+input{
+    margin-bottom: 10px;
+    margin-left: 60px;
+}
+select{
+    margin-left: 60px;
+}
+button{
+    cursor: pointer;
+}
